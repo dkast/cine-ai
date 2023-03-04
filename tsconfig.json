@@ -18,7 +18,7 @@
     "noUncheckedIndexedAccess": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "@/*": ["./src/*"]
     },
     "plugins": [
       {
@@ -33,7 +33,7 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs",
-    ".next/types/**/*.ts",
- ".prettierrc.js"  ],
+    ".next/types/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

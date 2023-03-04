@@ -4,11 +4,11 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)"]
+        sans: ["var(--font-inter)"],
       },
     },
   },
   plugins: [],
-};
+}
 
-module.exports = config;
+module.exports = config

@@ -1,8 +1,10 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "~/styles/globals.css";
+import React from "react"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
 
-const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
+import "@/styles/globals.css"
+
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: {
@@ -32,17 +34,17 @@ export const metadata: Metadata = {
   //     creator: "@dkast",
   //     images: ["https://dkast.dev/og.jpg"]
   //   }
-};
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en" className={`${inter.variable}`}>
       <head />
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen bg-zinc-900">{children}</body>
     </html>
-  );
+  )
 }
