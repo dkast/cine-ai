@@ -3,6 +3,9 @@
 /** @type {import("@ianvs/prettier-plugin-sort-imports").PrettierConfig} */
  module.exports = {
   semi: false,
+  tabWidth: 2,
+  useTabs: false,
+  trailingComma: "none",
   plugins: [
     "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss"
@@ -13,8 +16,10 @@
     "<THIRD_PARTY_MODULES>",
     "",
     "^@/components/(.*)$",
+    "^@/hooks/(.*)$",
     "^@/lib/(.*)$",
     "^@/styles/(.*)$",
+    "^@/env.mjs",
     "^[./]"
   ],
   importOrderBuiltinModulesToTop: true,

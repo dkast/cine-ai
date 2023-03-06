@@ -1,5 +1,7 @@
 import Balancer from "react-wrap-balancer"
 
+import Search from "@/components/search"
+
 export default function Home() {
   return (
     <main className="mx-auto flex max-w-3xl flex-col">
@@ -13,6 +15,7 @@ export default function Home() {
           Personaliza tus recomendaciones de cine y TV: elige 3 de tus películas
           o series favoritas y nosotros nos encargamos del resto.
         </p>
+        <Search />
       </div>
     </main>
   )
