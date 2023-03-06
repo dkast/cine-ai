@@ -37,10 +37,19 @@ const Search = () => {
   )
 
   const selectMedia = (item: Media) => {
+    const found = media.some((m) => {
+      return m.id == item.id
+    })
+
+    if (found) {
+      return
+    }
+
     if (media.length <= 2) {
       setMedia((media) => [...media, item])
       console.dir(item)
     }
+    setSearch("")
   }
 
   return (
