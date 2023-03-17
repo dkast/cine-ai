@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import { useAtom } from "jotai"
-import { Divide, Film } from "lucide-react"
+import { Film, Trash } from "lucide-react"
 import useSWR from "swr"
 
 import {
@@ -15,7 +15,7 @@ import {
 import useDebounce from "@/hooks/use-debounce"
 import { mediaAtom } from "@/lib/store"
 import type { Media } from "@/lib/types"
-import { fetcher } from "@/lib/utils"
+import { cn, fetcher } from "@/lib/utils"
 import { env } from "@/env.mjs"
 
 interface SearchResult {
@@ -53,7 +53,7 @@ const Search = () => {
   }
 
   return (
-    <div>
+    <div className="px-2 sm:px-0">
       <Command shouldFilter={false}>
         <CommandInput
           placeholder="Buscar..."
@@ -82,7 +82,7 @@ const Search = () => {
                   {item.poster_path ? (
                     <Poster path={item.poster_path} size="sm" />
                   ) : (
-                    <EmptyPoster />
+                    <EmptyPoster size="sm" />
                   )}
                   <span className="text-neutral-50">{mediaTitle}</span>
                   {!isNaN(year) && (
@@ -100,19 +100,24 @@ const Search = () => {
 
 const Poster = ({ path, size }: { path: string; size: "sm" | "md" | "lg" }) => {
   let mediaSize = ""
+  let twSize = ""
 
   switch (size) {
     case "sm":
       mediaSize = "w92"
+      twSize = "w-10"
       break
     case "md":
       mediaSize = "w154"
+      twSize = "w-20"
       break
     case "lg":
       mediaSize = "w185"
+      twSize = "w-28"
       break
     default:
       mediaSize = "w92"
+      twSize = "w-10"
       break
   }
 
@@ -120,15 +125,37 @@ const Poster = ({ path, size }: { path: string; size: "sm" | "md" | "lg" }) => {
     <div>
       <img
         src={`https://image.tmdb.org/t/p/${mediaSize}/${path}`}
-        className="w-10 rounded border border-white/10"
+        className={cn("w-10 rounded border border-white/10 shadow-md", twSize)}
       />
     </div>
   )
 }
 
-const EmptyPoster = () => {
+const EmptyPoster = ({ size }: { size: "sm" | "md" | "lg" }) => {
+  let twSize = ""
+
+  switch (size) {
+    case "sm":
+      twSize = "w-10  h-[59px]"
+      break
+    case "md":
+      twSize = "w-20 h-[119px]"
+      break
+    case "lg":
+      twSize = "w-28 h-[167px]"
+      break
+    default:
+      twSize = "w-10"
+      break
+  }
+
   return (
-    <div className="flex h-[59px] w-10 items-center justify-center rounded border border-white/10 bg-neutral-700">
+    <div
+      className={cn(
+        "flex items-center justify-center rounded border border-white/10 bg-neutral-700 shadow-md",
+        twSize
+      )}
+    >
       <Film className="h-6 w-6 shrink-0 text-neutral-500" strokeOpacity={1} />
     </div>
   )
@@ -136,22 +163,50 @@ const EmptyPoster = () => {
 
 const SelectedMovies = () => {
   const [media, setMedia] = useAtom(mediaAtom)
+
+  const handleDeleteMedia = (item: Media) => {
+    setMedia(
+      media.filter((m) => {
+        return m.id !== item.id
+      })
+    )
+  }
+
   return (
-    <div>
-      {media &&
+    <div className="flex justify-around gap-4 p-2 sm:gap-8 sm:p-4">
+      {media && media.length > 0 ? (
         media.map((item) => {
+          const mediaTitle = item.media_type == "movie" ? item.title : item.name
           return (
-            <div key={item.id}>
-              <div>
+            <div
+              key={item.id}
+              className="group flex max-w-[80px] flex-col items-center gap-2 sm:max-w-[120px]"
+            >
+              <div className="relative">
+                <div className="w-18 absolute -top-1 -right-1 flex w-20 justify-end opacity-0 transition group-hover:opacity-100">
+                  <button
+                    type="button"
+                    className="rounded-full bg-red-800 p-1 shadow active:scale-90"
+                    onClick={() => handleDeleteMedia(item)}
+                  >
+                    <Trash className="h-4 w-4 text-red-400" />
+                  </button>
+                </div>
                 {item.poster_path ? (
                   <Poster path={item.poster_path} size="lg" />
                 ) : (
-                  <EmptyPoster />
+                  <EmptyPoster size="lg" />
                 )}
+              </div>
+              <div className="flex items-center justify-center">
+                <span className="text-xs">{mediaTitle}</span>
               </div>
             </div>
           )
-        })}
+        })
+      ) : (
+        <span>Selecciona una pelicula o serie</span>
+      )}
     </div>
   )
 }

@@ -9,16 +9,16 @@ const inter = Inter({ variable: "--font-inter", subsets: ["latin"] })
 export const metadata: Metadata = {
   title: {
     default: "WatchGPT",
-    template: "%s | WatchGPT",
+    template: "%s | WatchGPT"
   },
   description: "Obten recomendaciones de cine y TV con AI",
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon.png"
   },
   openGraph: {
     title: "WatchGPT",
     type: "website",
-    url: "https://watchgpt.vercel.app",
+    url: "https://watchgpt.vercel.app"
     // images: [
     //   {
     //     url: "https://dkast.dev/og.jpg",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     //     height: 675
     //   }
     // ]
-  },
+  }
   //   twitter: {
   //     title: "Daniel Castillejo",
   //     card: "summary_large_image",
@@ -37,14 +37,16 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {
   return (
     <html lang="en" className={`${inter.variable}`}>
       <head />
-      <body className="min-h-screen bg-zinc-900">{children}</body>
+      <body className="min-h-screen bg-zinc-900 text-neutral-500">
+        {children}
+      </body>
     </html>
   )
 }
