@@ -25,8 +25,8 @@ const SelectKind = () => {
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="Serie TV">Serie de TV</SelectItem>
-          <SelectItem value="Película">Película</SelectItem>
+          <SelectItem value="Series de TV">Serie de TV</SelectItem>
+          <SelectItem value="Películas">Película</SelectItem>
           <SelectItem value="Sorprendeme">Sorprendeme</SelectItem>
         </SelectContent>
       </Select>

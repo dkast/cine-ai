@@ -1,5 +1,6 @@
 import Balancer from "react-wrap-balancer"
 
+import GenerateResults from "@/components/generate-results"
 import SearchMedia from "@/components/search-media"
 import SelectKind from "@/components/select-kind"
 
@@ -18,6 +19,7 @@ export default function Home() {
         </p>
         <SearchMedia />
         <SelectKind />
+        <GenerateResults />
       </div>
     </main>
   )
