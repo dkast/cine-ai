@@ -22,7 +22,7 @@ interface SearchResult {
   results: Media[]
 }
 
-const Search = () => {
+const SearchMedia = () => {
   const [search, setSearch] = useState<string>("")
   const debounceSearch = useDebounce(search, 500)
   const [media, setMedia] = useAtom(mediaAtom)
@@ -205,10 +205,10 @@ const SelectedMovies = () => {
           )
         })
       ) : (
-        <span>Selecciona una pelicula o serie</span>
+        <span>Selecciona una película o serie</span>
       )}
     </div>
   )
 }
 
-export default Search
+export default SearchMedia

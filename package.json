@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@radix-ui/react-select": "^1.2.1",
     "clsx": "^1.2.1",
     "cmdk": "^0.2.0",
     "jotai": "^2.0.3",
@@ -19,6 +20,7 @@
     "react-wrap-balancer": "^0.4.0",
     "swr": "^2.0.4",
     "tailwind-merge": "^1.10.0",
+    "tailwindcss-animate": "^1.0.5",
     "zod": "^3.20.6"
   },
   "devDependencies": {

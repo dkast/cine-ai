@@ -3,17 +3,17 @@ const config = {
   overrides: [
     {
       extends: [
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
       ],
       files: ["*.ts", "*.tsx"],
       parserOptions: {
-        project: "tsconfig.json",
-      },
-    },
+        project: "tsconfig.json"
+      }
+    }
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: "./tsconfig.json",
+    project: "./tsconfig.json"
   },
   plugins: ["@typescript-eslint"],
   extends: ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
@@ -22,10 +22,11 @@ const config = {
       "warn",
       {
         prefer: "type-imports",
-        fixStyle: "inline-type-imports",
-      },
+        fixStyle: "inline-type-imports"
+      }
     ],
-  },
-};
+    "@typescript-eslint/ban-ts-comment": "warn"
+  }
+}
 
-module.exports = config;
+module.exports = config

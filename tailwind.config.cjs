@@ -4,11 +4,12 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)"],
-      },
-    },
+        sans: ["var(--font-inter)"]
+      }
+    }
   },
-  plugins: [],
+  // @ts-ignore
+  plugins: [require("tailwindcss-animate")]
 }
 
 module.exports = config
