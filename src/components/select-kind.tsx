@@ -27,7 +27,6 @@ const SelectKind = () => {
         <SelectContent>
           <SelectItem value="Series de TV">Serie de TV</SelectItem>
           <SelectItem value="Películas">Película</SelectItem>
-          <SelectItem value="Sorprendeme">Sorprendeme</SelectItem>
         </SelectContent>
       </Select>
     </div>
