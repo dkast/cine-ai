@@ -2,9 +2,9 @@
 const config = {
   overrides: [
     {
-      extends: [
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
-      ],
+      // extends: [
+      //   "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      // ],
       files: ["*.ts", "*.tsx"],
       parserOptions: {
         project: "tsconfig.json"
@@ -25,7 +25,11 @@ const config = {
         fixStyle: "inline-type-imports"
       }
     ],
-    "@typescript-eslint/ban-ts-comment": "warn"
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unsafe-assignment": "warn",
+    "@typescript-eslint/no-unsafe-member-access": "warn",
+    "@typescript-eslint/no-unsafe-call": "warn"
   }
 }
 

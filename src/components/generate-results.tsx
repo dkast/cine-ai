@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
+import BarLoader from "react-spinners/BarLoader"
 import { useAtom } from "jotai"
 
 import { kindAtom, mediaAtom } from "@/lib/store"
@@ -20,7 +21,7 @@ const GenerateResults = () => {
           })
           .join(",")
       : ""
-  }. Regresa tu respuesta como una lista numerada, con el titulo separado por un colon, deja una linea en blanco entre cada item de la lista.`
+  }. Regresa tu respuesta como una lista numerada con el titulo seguido por dos puntos, y una breve descripcion, deja una linea en blanco entre cada item de la lista.`
 
   const generateMedia = async (
     e: React.MouseEvent<HTMLButtonElement>
@@ -64,14 +65,19 @@ const GenerateResults = () => {
 
   return (
     <>
-      <button
-        disabled={!enabled}
-        // eslint-disable-next-line @typescript-eslint/no-misused-promises
-        onClick={(e) => generateMedia(e)}
-        className="rounded-md bg-amber-500 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 active:scale-[0.99] disabled:opacity-70"
-      >
-        Genera recomendaciones
-      </button>
+      {loading ? (
+        <BarLoader />
+      ) : (
+        <button
+          disabled={!enabled}
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
+          onClick={(e) => generateMedia(e)}
+          className="rounded-md bg-amber-500 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 active:scale-[0.99] disabled:opacity-70"
+        >
+          Genera recomendaciones
+        </button>
+      )}
+      <div>{generatedMedia}</div>
     </>
   )
 }
