@@ -12,6 +12,7 @@ const GenerateResults = () => {
   const enabled = media?.length > 0
   const [loading, setLoading] = useState<boolean>(false)
   const [generatedMedia, setGeneratedMedia] = useState<string>("")
+  let done = false
 
   const prompt = `Recomienda 5 ${kind} que sean similares al siguiente listado: ${
     media.length > 0
@@ -51,7 +52,6 @@ const GenerateResults = () => {
 
     const reader = data.getReader()
     const decoder = new TextDecoder()
-    let done = false
 
     while (!done) {
       const { value, done: doneReading } = await reader.read()
@@ -77,7 +77,26 @@ const GenerateResults = () => {
           Genera recomendaciones
         </button>
       )}
-      <div>{generatedMedia}</div>
+      <div>
+        {generatedMedia.split("\n").map((m, i) => {
+          console.log(m)
+          if (
+            (generatedMedia.split("\n").length - 1 >= i || done) &&
+            m.trim() !== ""
+          ) {
+            // @ts-ignore
+            const [, title, description] = m.match(/\d\.\s*(.*?):\s*(.*)/)
+            return (
+              <div key={i}>
+                <h2>{title}</h2>
+                <p>{description}</p>
+              </div>
+            )
+          } else {
+            return m
+          }
+        })}
+      </div>
     </>
   )
 }
