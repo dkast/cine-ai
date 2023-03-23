@@ -9,7 +9,6 @@ import { kindAtom, mediaAtom } from "@/lib/store"
 const GenerateResults = () => {
   const [media] = useAtom(mediaAtom)
   const [kind] = useAtom(kindAtom)
-  const enabled = media?.length > 0
   const [loading, setLoading] = useState<boolean>(false)
   const [generatedMedia, setGeneratedMedia] = useState<string>("")
   let done = false
@@ -22,7 +21,7 @@ const GenerateResults = () => {
           })
           .join(",")
       : ""
-  }. Regresa tu respuesta como una lista numerada con el titulo seguido por dos puntos, y una breve descripcion, deja una linea en blanco entre cada item de la lista.`
+  }. Regresa tu respuesta como una lista numerada con el titulo seguido por dos puntos, y una breve descripción, deja una linea en blanco entre cada item de la lista.`
 
   const generateMedia = async (
     e: React.MouseEvent<HTMLButtonElement>
@@ -69,7 +68,7 @@ const GenerateResults = () => {
         <BarLoader />
       ) : (
         <button
-          disabled={!enabled}
+          disabled={media?.length === 0}
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onClick={(e) => generateMedia(e)}
           className="rounded-md bg-amber-500 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 active:scale-[0.99] disabled:opacity-70"
@@ -77,7 +76,7 @@ const GenerateResults = () => {
           Genera recomendaciones
         </button>
       )}
-      <div>
+      <div className="flex flex-col gap-2">
         {generatedMedia.split("\n").map((m, i) => {
           console.log(m)
           if (
@@ -87,9 +86,14 @@ const GenerateResults = () => {
             // @ts-ignore
             const [, title, description] = m.match(/\d\.\s*(.*?):\s*(.*)/)
             return (
-              <div key={i}>
-                <h2>{title}</h2>
-                <p>{description}</p>
+              <div
+                className="rounded-lg border border-gray-800 bg-gradient-to-b from-gray-800 via-gray-900 to-gray-900 px-5 py-3"
+                key={i}
+              >
+                <h2 className="pb-2 pt-10 text-left text-xl font-bold text-gray-300">
+                  {title}
+                </h2>
+                <p className="text-justify">{description}</p>
               </div>
             )
           } else {

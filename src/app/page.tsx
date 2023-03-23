@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main className="mx-auto flex max-w-3xl flex-col">
       <div className="flex flex-col gap-8 py-32 text-center sm:py-44">
-        <h1 className="text-5xl font-bold text-neutral-50">
+        <h1 className="text-5xl font-bold text-gray-50">
           <Balancer>
             Descubre tu próxima serie favorita o película con la ayuda de IA.
           </Balancer>

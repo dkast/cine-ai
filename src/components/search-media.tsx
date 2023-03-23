@@ -63,7 +63,7 @@ const SearchMedia = () => {
         <CommandList>
           {isLoading && (
             <CommandLoading>
-              <span className="block pb-4 text-neutral-300">Buscando...</span>
+              <span className="block pb-4 text-gray-300">Buscando...</span>
             </CommandLoading>
           )}
           {data?.results &&
@@ -84,9 +84,9 @@ const SearchMedia = () => {
                   ) : (
                     <EmptyPoster size="sm" />
                   )}
-                  <span className="text-neutral-50">{mediaTitle}</span>
+                  <span className="text-gray-50">{mediaTitle}</span>
                   {!isNaN(year) && (
-                    <span className="text-neutral-50">{`(${year})`}</span>
+                    <span className="text-gray-50">{`(${year})`}</span>
                   )}
                 </CommandItem>
               )
@@ -152,11 +152,11 @@ const EmptyPoster = ({ size }: { size: "sm" | "md" | "lg" }) => {
   return (
     <div
       className={cn(
-        "flex items-center justify-center rounded border border-white/10 bg-neutral-700 shadow-md",
+        "flex items-center justify-center rounded border border-white/10 bg-gray-700 shadow-md",
         twSize
       )}
     >
-      <Film className="h-6 w-6 shrink-0 text-neutral-500" strokeOpacity={1} />
+      <Film className="h-6 w-6 shrink-0 text-gray-500" strokeOpacity={1} />
     </div>
   )
 }

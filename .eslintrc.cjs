@@ -30,7 +30,8 @@ const config = {
     "@typescript-eslint/no-unsafe-assignment": "warn",
     "@typescript-eslint/no-unsafe-member-access": "warn",
     "@typescript-eslint/no-unsafe-call": "warn"
-  }
+  },
+  ignorePatterns: ["tailwind.config.cjs"]
 }
 
 module.exports = config

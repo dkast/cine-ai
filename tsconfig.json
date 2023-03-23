@@ -40,7 +40,8 @@
     "**/*.cjs",
     "**/*.mjs",
     ".next/types/**/*.ts",
-    "/Users/dcastillejo/Developer/watch-gpt/.next/types/**/*.ts"
+    "/Users/dcastillejo/Developer/watch-gpt/.next/types/**/*.ts",
+    "C:\\dev\\watch-gpt\\.next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
