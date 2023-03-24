@@ -11,6 +11,7 @@ import {
   SelectValue
 } from "@/components/ui/select"
 import { kindAtom } from "@/lib/store"
+import { type Kind } from "@/lib/types"
 
 const SelectKind = () => {
   const [kind, setKind] = useAtom(kindAtom)
@@ -20,13 +21,13 @@ const SelectKind = () => {
       <span className="text-xl">
         ¿Que tipo de recomendaciones estas buscando?
       </span>
-      <Select value={kind} onValueChange={(value) => setKind(value)}>
+      <Select value={kind} onValueChange={(value) => setKind(value as Kind)}>
         <SelectTrigger className="w-[180px]">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="Series de TV">Serie de TV</SelectItem>
-          <SelectItem value="Películas">Película</SelectItem>
+          <SelectItem value="tv">Serie de TV</SelectItem>
+          <SelectItem value="movie">Película</SelectItem>
         </SelectContent>
       </Select>
     </div>

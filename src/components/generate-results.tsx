@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import BarLoader from "react-spinners/BarLoader"
 import { useAtom } from "jotai"
 
+import MediaCard from "@/components/media-card"
 import { kindAtom, mediaAtom } from "@/lib/store"
 
 const GenerateResults = () => {
@@ -13,7 +14,9 @@ const GenerateResults = () => {
   const [generatedMedia, setGeneratedMedia] = useState<string>("")
   let done = false
 
-  const prompt = `Recomienda 5 ${kind} que sean similares al siguiente listado: ${
+  const prompt = `Recomienda 3 ${
+    kind === "movie" ? "Películas" : "Series de TV"
+  } que sean similares al siguiente listado: ${
     media.length > 0
       ? media
           .map((i) => {
@@ -86,15 +89,12 @@ const GenerateResults = () => {
             // @ts-ignore
             const [, title, description] = m.match(/\d\.\s*(.*?):\s*(.*)/)
             return (
-              <div
-                className="rounded-lg border border-gray-800 bg-gradient-to-b from-gray-800 via-gray-900 to-gray-900 px-5 py-3"
+              <MediaCard
                 key={i}
-              >
-                <h2 className="pb-2 pt-10 text-left text-xl font-bold text-gray-300">
-                  {title}
-                </h2>
-                <p className="text-justify">{description}</p>
-              </div>
+                title={title as string}
+                description={description as string}
+                kind={kind}
+              />
             )
           } else {
             return m
