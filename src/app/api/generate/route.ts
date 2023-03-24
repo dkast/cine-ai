@@ -1,9 +1,8 @@
 import { OpenAIStream, type OpenAIStreamPayload } from "@/lib/open-ai-stream";
 
 
-export const config = {
-  runtime: "edge"
-}
+export const runtime = 'experimental-edge'
+
 
 export async function POST(request: Request) {
   const { prompt } = (await request.json()) as {
