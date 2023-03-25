@@ -6,6 +6,8 @@ export type Media = {
   name?: string
   title?: string
   release_date: string
+  popularity: number
+  vote_average: number
 }
 
 export type Kind = "movie" | "tv"
