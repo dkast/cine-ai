@@ -17,8 +17,8 @@ const SelectKind = () => {
   const [kind, setKind] = useAtom(kindAtom)
   console.log(kind)
   return (
-    <div className="flex items-center gap-4">
-      <span className="text-xl">
+    <div className="flex flex-col items-center gap-4 sm:flex-row">
+      <span className="text-base sm:text-xl">
         ¿Que tipo de recomendaciones estas buscando?
       </span>
       <Select value={kind} onValueChange={(value) => setKind(value as Kind)}>

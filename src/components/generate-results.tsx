@@ -79,7 +79,7 @@ const GenerateResults = () => {
           Genera recomendaciones
         </button>
       )}
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-4">
         {generatedMedia.split("\n").map((m, i) => {
           console.log(m)
           if (

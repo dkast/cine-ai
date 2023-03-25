@@ -53,48 +53,46 @@ const SearchMedia = () => {
   }
 
   return (
-    <div className="px-2 sm:px-0">
-      <Command shouldFilter={false}>
-        <CommandInput
-          placeholder="Buscar..."
-          value={search}
-          onValueChange={setSearch}
-        />
-        <CommandList>
-          {isLoading && (
-            <CommandLoading>
-              <span className="block pb-4 text-gray-300">Buscando...</span>
-            </CommandLoading>
-          )}
-          {data?.results &&
-            data.results.map((item) => {
-              const mediaTitle =
-                item.media_type == "movie" ? item.title : item.name
-              const year = new Date(item.release_date).getFullYear()
+    <Command shouldFilter={false}>
+      <CommandInput
+        placeholder="Buscar..."
+        value={search}
+        onValueChange={setSearch}
+      />
+      <CommandList>
+        {isLoading && (
+          <CommandLoading>
+            <span className="block pb-4 text-gray-300">Buscando...</span>
+          </CommandLoading>
+        )}
+        {data?.results &&
+          data.results.map((item) => {
+            const mediaTitle =
+              item.media_type == "movie" ? item.title : item.name
+            const year = new Date(item.release_date).getFullYear()
 
-              return (
-                <CommandItem
-                  key={item.id}
-                  value={item.id.toString()}
-                  onSelect={() => selectMedia(item)}
-                  className="gap-2"
-                >
-                  {item.poster_path ? (
-                    <Poster path={item.poster_path} size="sm" />
-                  ) : (
-                    <EmptyPoster size="sm" />
-                  )}
-                  <span className="text-gray-50">{mediaTitle}</span>
-                  {!isNaN(year) && (
-                    <span className="text-gray-50">{`(${year})`}</span>
-                  )}
-                </CommandItem>
-              )
-            })}
-          <SelectedMovies />
-        </CommandList>
-      </Command>
-    </div>
+            return (
+              <CommandItem
+                key={item.id}
+                value={item.id.toString()}
+                onSelect={() => selectMedia(item)}
+                className="gap-2"
+              >
+                {item.poster_path ? (
+                  <Poster path={item.poster_path} size="sm" />
+                ) : (
+                  <EmptyPoster size="sm" />
+                )}
+                <span className="text-gray-50">{mediaTitle}</span>
+                {!isNaN(year) && (
+                  <span className="text-gray-50">{`(${year})`}</span>
+                )}
+              </CommandItem>
+            )
+          })}
+        <SelectedMovies />
+      </CommandList>
+    </Command>
   )
 }
 

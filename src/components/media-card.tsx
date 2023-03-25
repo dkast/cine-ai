@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import { Star } from "lucide-react"
 import useSWR from "swr"
 
 import { type Media } from "@/lib/types"
@@ -37,10 +38,20 @@ const MediaCard = ({ title, description, kind }: MediaCardProps) => {
       )}
       <div className="absolute inset-0 z-10 w-full bg-gradient-to-b from-black/20 via-gray-900/90 to-gray-900"></div>
       <div className="relative z-20 p-5">
-        <h2 className="pb-2 pt-20 text-left text-2xl font-bold text-gray-300">
-          {title}
-        </h2>
-        <p className="text-justify">{description}</p>
+        <div className="flex items-end gap-4 pb-2 pt-20">
+          <h2 className="text-left text-2xl font-bold text-gray-300">
+            {title}
+          </h2>
+          {isLoading ? (
+            <span>Cargando...</span>
+          ) : (
+            <span className="flex items-center gap-2 pb-1 text-amber-400">
+              <Star className="inline-block h-4 w-4" />
+              {data?.results[0]?.vote_average.toPrecision(2)}
+            </span>
+          )}
+        </div>
+        <p className="text-justify text-sm sm:text-base">{description}</p>
       </div>
     </div>
   )
