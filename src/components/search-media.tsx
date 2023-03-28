@@ -49,7 +49,6 @@ const SearchMedia = () => {
 
     if (media.length <= 2) {
       setMedia((media) => [...media, item])
-      console.dir(item)
     }
     setSearch("")
   }

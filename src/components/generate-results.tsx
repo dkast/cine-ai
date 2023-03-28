@@ -78,14 +78,14 @@ const GenerateResults = () => {
           onClick={(e) => generateMedia(e)}
           className="rounded-md bg-amber-500 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 active:scale-[0.99] disabled:opacity-70"
         >
-          Genera recomendaciones
+          Generar recomendaciones
         </button>
       )}
       <div className="flex flex-col gap-4">
         {generatedMedia.split("\n").map((m, i) => {
           console.log(m)
           if (
-            (generatedMedia.split("\n").length - 1 >= i || loading) &&
+            (generatedMedia.split("\n").length - 1 > i || !loading) &&
             m.trim() !== ""
           ) {
             // @ts-ignore
