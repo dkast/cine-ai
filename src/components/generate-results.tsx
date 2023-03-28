@@ -12,9 +12,8 @@ const GenerateResults = () => {
   const [kind] = useAtom(kindAtom)
   const [loading, setLoading] = useState<boolean>(false)
   const [generatedMedia, setGeneratedMedia] = useState<string>("")
-  let done = false
 
-  const prompt = `Recomienda 3 ${
+  const prompt = `Recomienda 2 ${
     kind === "movie" ? "Películas" : "Series de TV"
   } que sean similares al siguiente listado: ${
     media.length > 0
@@ -54,6 +53,7 @@ const GenerateResults = () => {
 
     const reader = data.getReader()
     const decoder = new TextDecoder()
+    let done = false
 
     while (!done) {
       const { value, done: doneReading } = await reader.read()
@@ -68,7 +68,9 @@ const GenerateResults = () => {
   return (
     <>
       {loading ? (
-        <BarLoader />
+        <div className="flex items-center justify-center">
+          <BarLoader color="#FFF" />
+        </div>
       ) : (
         <button
           disabled={media?.length === 0}
@@ -83,7 +85,7 @@ const GenerateResults = () => {
         {generatedMedia.split("\n").map((m, i) => {
           console.log(m)
           if (
-            (generatedMedia.split("\n").length - 1 >= i || done) &&
+            (generatedMedia.split("\n").length - 1 >= i || loading) &&
             m.trim() !== ""
           ) {
             // @ts-ignore

@@ -28,7 +28,9 @@ const SearchMedia = () => {
   const [media, setMedia] = useAtom(mediaAtom)
 
   const { data, isLoading } = useSWR<SearchResult, boolean>(
-    `https://api.themoviedb.org/3/search/multi?api_key=${env.NEXT_PUBLIC_TMBD_API_KEY}&query=${debounceSearch}&page=1&include_adult=false&language=es`,
+    debounceSearch !== ""
+      ? `https://api.themoviedb.org/3/search/multi?api_key=${env.NEXT_PUBLIC_TMBD_API_KEY}&query=${debounceSearch}&page=1&include_adult=false&language=es`
+      : null,
     fetcher,
     {
       revalidateOnFocus: false,

@@ -14,8 +14,8 @@ export default function Home() {
           </Balancer>
         </h1>
         <p className="text-base sm:text-xl">
-          Personaliza tus recomendaciones de cine y TV: elige 3 de tus películas
-          o series favoritas y nosotros nos encargamos del resto.
+          Personaliza tus recomendaciones de cine y TV: elige hasta 3 de tus
+          películas o series favoritas y nosotros nos encargamos del resto.
         </p>
         <SearchMedia />
         <SelectKind />
