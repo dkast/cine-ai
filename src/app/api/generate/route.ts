@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
-    max_tokens: 600,
+    max_tokens: 400,
     stream: true,
     n: 1
   }

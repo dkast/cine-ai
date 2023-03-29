@@ -6,7 +6,7 @@ const config = {
   theme: {
     extend: {
       colors: {
-        gray: colors.zinc
+        gray: colors.stone,
       },
       fontFamily: {
         sans: ["var(--font-inter)"]

@@ -49,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable}`}>
       <head />
-      <body className="min-h-screen bg-gray-900 text-gray-400">{children}</body>
+      <body className="bg-gradient-to-b from-gray-950 to-gray-900 min-h-screen text-gray-400">{children}</body>
     </html>
   )
 }

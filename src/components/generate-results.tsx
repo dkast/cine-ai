@@ -14,7 +14,7 @@ const GenerateResults = () => {
   const [selectedKind, setSelectedKind] = useState("")
   const [generatedMedia, setGeneratedMedia] = useState<string>("")
 
-  const prompt = `Recomienda 2 ${
+  const prompt = `Recomienda 3 ${
     kind === "movie" ? "Películas" : "Series de TV"
   } que sean similares al siguiente listado: ${
     media.length > 0
@@ -24,7 +24,7 @@ const GenerateResults = () => {
           })
           .join(",")
       : ""
-  }. Regresa tu respuesta como una lista numerada con el titulo seguido por dos puntos, y una breve descripción, deja una linea en blanco entre cada item de la lista.`
+  }. Regresa tu respuesta como una lista numerada con el titulo seguido por dos puntos, una breve descripción y la razón de la recomendación, deja una linea en blanco entre cada item de la lista.`
 
   const generateMedia = async (
     e: React.MouseEvent<HTMLButtonElement>
@@ -78,7 +78,7 @@ const GenerateResults = () => {
           disabled={media?.length === 0}
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onClick={(e) => generateMedia(e)}
-          className="rounded-md bg-amber-500 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 active:scale-[0.99] disabled:opacity-70"
+          className="rounded-md shadow-amber-400/20 bg-amber-400 py-2.5 px-3.5 text-sm font-semibold text-black/90 shadow-md transition hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 active:scale-[0.99] disabled:opacity-70"
         >
           Generar recomendaciones
         </button>
