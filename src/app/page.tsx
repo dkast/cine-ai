@@ -7,8 +7,8 @@ import SelectKind from "@/components/select-kind"
 export default function Home() {
   return (
     <main className="mx-auto flex max-w-3xl flex-col">
-      <div className="flex flex-col gap-8 py-32 px-3 text-center sm:py-44 sm:px-1">
-        <h1 className="text-3xl font-bold text-gray-50 sm:text-5xl">
+      <div className="flex flex-col gap-10 py-24 px-3 text-center sm:py-32 sm:px-1">
+        <h1 className="text-3xl font-bold text-gray-50 sm:text-4xl">
           <Balancer>
             Descubre tu próxima serie favorita o película con la ayuda de IA.
           </Balancer>

@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import BarLoader from "react-spinners/BarLoader"
+import BeatLoader from "react-spinners/BeatLoader"
 import { useAtom } from "jotai"
 
 import MediaCard from "@/components/media-card"
@@ -11,6 +11,7 @@ const GenerateResults = () => {
   const [media] = useAtom(mediaAtom)
   const [kind] = useAtom(kindAtom)
   const [loading, setLoading] = useState<boolean>(false)
+  const [selectedKind, setSelectedKind] = useState("")
   const [generatedMedia, setGeneratedMedia] = useState<string>("")
 
   const prompt = `Recomienda 2 ${
@@ -30,6 +31,7 @@ const GenerateResults = () => {
   ): Promise<void> => {
     e.preventDefault()
     setGeneratedMedia("")
+    setSelectedKind(kind)
     setLoading(true)
 
     const response = await fetch("/api/generate", {
@@ -69,7 +71,7 @@ const GenerateResults = () => {
     <>
       {loading ? (
         <div className="flex items-center justify-center">
-          <BarLoader color="#FFF" />
+          <BeatLoader color="#FFF" />
         </div>
       ) : (
         <button
@@ -95,7 +97,7 @@ const GenerateResults = () => {
                 key={i}
                 title={title as string}
                 description={description as string}
-                kind={kind}
+                kind={selectedKind}
               />
             )
           } else {
