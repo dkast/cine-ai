@@ -78,7 +78,7 @@ const GenerateResults = () => {
           disabled={media?.length === 0}
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onClick={(e) => generateMedia(e)}
-          className="rounded-md shadow-amber-400/20 bg-amber-400 py-2.5 px-3.5 text-sm font-semibold text-black/90 shadow-md transition hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 active:scale-[0.99] disabled:opacity-70"
+          className="rounded-lg shadow-amber-400/20 bg-amber-400 py-2.5 px-3.5 text-sm font-semibold text-black/90 shadow-md transition hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 active:scale-[0.99] disabled:opacity-70"
         >
           Generar recomendaciones
         </button>

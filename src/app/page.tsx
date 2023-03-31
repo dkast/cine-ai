@@ -34,7 +34,7 @@ export default function Home() {
         <SelectKind />
         <GenerateResults />
       </main>
-      <footer className="text-center py-8">
+      <footer className="text-center py-8 text-sm">
         <Balancer>Desarrollado por <Link href="https://dkast.dev" className="text-gray-200 hover:underline">Daniel Castillejo</Link>, habilitado por <Link href="https://openai.com/blog/chatgpt" className="text-gray-200 hover:underline">ChatGPT</Link>.
         </Balancer>
       </footer>
