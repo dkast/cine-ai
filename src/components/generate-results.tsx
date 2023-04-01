@@ -70,17 +70,24 @@ const GenerateResults = () => {
   return (
     <>
       {loading ? (
-        <div className="flex items-center justify-center">
+        <div className="flex flex-col items-center justify-center gap-1">
           <BeatLoader color="#FFF" />
+          <span>Generando recomendaciones...</span>
         </div>
       ) : (
         <button
           disabled={media?.length === 0}
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onClick={(e) => generateMedia(e)}
-          className="rounded-lg bg-amber-400 px-3.5 py-2.5 text-sm font-semibold text-black/90 shadow-md shadow-amber-400/20 transition hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 active:scale-[0.99] disabled:opacity-70"
+          className="relative h-10 overflow-clip rounded-full bg-amber-400 px-3.5 py-2.5 text-sm font-semibold text-black/90 shadow-md shadow-amber-400/20 ring-2 ring-amber-300 transition hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-200 active:scale-[0.99] disabled:opacity-70"
         >
-          Generar recomendaciones
+          <span className="absolute inset-[2px] z-10 flex items-center justify-center rounded-full bg-amber-400">
+            Generar recomendaciones
+          </span>
+          <span
+            className="absolute inset-0 animate-spin-slow rounded-full bg-[conic-gradient(var(--tw-gradient-stops))] from-amber-100 via-amber-100 to-amber-400 blur"
+            aria-hidden
+          ></span>
         </button>
       )}
       <div className="flex flex-col gap-4">

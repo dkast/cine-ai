@@ -6,10 +6,13 @@ const config = {
   theme: {
     extend: {
       colors: {
-        gray: colors.stone,
+        gray: colors.stone
       },
       fontFamily: {
         sans: ["var(--font-inter)"]
+      },
+      animation: {
+        "spin-slow": "spin 5s ease-out infinite"
       }
     }
   },

@@ -1,28 +1,25 @@
-# Create T3 App
+# CineAI
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Este es un proyecto genera recomendaciones de películas y series de acuerdo a tus gustos utilizando inteligencia artificial.
 
-## What's next? How do I make an app with this?
+## ¿Cómo funciona?
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+Este proyecto utiliza el API de ChatGPT de [OpenAI](https://openai.com/) y [Next.js](https://nextjs.org) como _frontend_. Construye un _prompt_ basado en la selección de películas y series que el usuario hace y lo envía a la API de OpenAI. La API devuelve un texto que es procesado y se muestra al usuario. La búsqueda de películas y series se hace utilizando la API de [The Movie Database](https://www.themoviedb.org/), así como para obtener la información de las películas y series sugeridas por ChatGPT.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## ¿Cómo puedo probarlo?
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+Clona el repositorio, ve a [OpenAI](https://openai.com/) y crea una cuenta. Una vez creada la cuenta, crea una API key y copia el valor de la API key en el archivo `.env`.
 
-## Learn More
+Crea una cuenta en [The Movie Database](https://www.themoviedb.org/) y copia el valor de la API key en el archivo `.env`.
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+Ahora, ejecuta el siguiente comando para instalar las dependencias:
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+```bash
+npm install
+```
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+y para iniciar la aplicación:
 
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+```bash
+npm run dev
+```
