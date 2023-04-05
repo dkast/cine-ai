@@ -8,10 +8,10 @@ const inter = Inter({ variable: "--font-inter", subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: {
-    default: "WatchGPT",
-    template: "%s | WatchGPT"
+    default: "CineAI",
+    template: "%s | CineAI"
   },
-  description: "Obten recomendaciones de cine y TV con AI",
+  description: "Obtén recomendaciones de cine y TV con AI",
   icons: {
     icon: "/favicon.png"
   },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     maximumScale: 1
   },
   openGraph: {
-    title: "WatchGPT",
+    title: "CineAI",
     type: "website",
     url: "https://watchgpt.vercel.app"
     // images: [
@@ -49,7 +49,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable}`}>
       <head />
-      <body className="bg-gradient-to-b from-gray-950 to-gray-900 min-h-screen text-gray-400">{children}</body>
+      <body className="min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 text-gray-400">
+        {children}
+      </body>
     </html>
   )
 }
