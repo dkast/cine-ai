@@ -37,7 +37,7 @@ export default function Home() {
         <SelectKind />
         <GenerateResults />
       </main>
-      <footer className="py-8 text-center text-sm">
+      <footer className="px-3 py-8 text-center text-sm sm:px-1">
         <Balancer>
           Desarrollado por{" "}
           <Link

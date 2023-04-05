@@ -24,5 +24,5 @@ export async function POST(request: Request) {
   const stream = await OpenAIStream(payload)
 
   return new Response(stream)
-  //return new Response("Hello", { status: 504 })
+  // return new Response("Hello", { status: 504 })
 }

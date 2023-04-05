@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
+import { AnimatePresence, motion } from "framer-motion"
 import { useAtom } from "jotai"
 import { Film, Trash } from "lucide-react"
 import useSWR from "swr"
@@ -173,39 +174,46 @@ const SelectedMovies = () => {
 
   return (
     <div className="flex justify-around gap-4 p-2 sm:gap-8 sm:p-4">
-      {media && media.length > 0 ? (
-        media.map((item) => {
-          const mediaTitle = item.media_type == "movie" ? item.title : item.name
-          return (
-            <div
-              key={item.id}
-              className="group flex max-w-[80px] flex-col items-center gap-2 sm:max-w-[120px]"
-            >
-              <div className="relative">
-                <div className="w-18 absolute -top-1 -right-1 flex w-20 justify-end opacity-0 transition group-hover:opacity-100">
-                  <button
-                    type="button"
-                    className="rounded-full bg-red-800 p-1 shadow active:scale-90"
-                    onClick={() => handleDeleteMedia(item)}
-                  >
-                    <Trash className="h-4 w-4 text-red-400" />
-                  </button>
+      <AnimatePresence mode="popLayout" initial={false}>
+        {media && media.length > 0 ? (
+          media.map((item) => {
+            const mediaTitle =
+              item.media_type == "movie" ? item.title : item.name
+            return (
+              <motion.div
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                key={item.id}
+                className="group flex max-w-[80px] flex-col items-center gap-2 sm:max-w-[120px]"
+              >
+                <div className="relative">
+                  <div className="w-18 absolute -right-1 -top-1 flex w-20 justify-end opacity-0 transition group-hover:opacity-100">
+                    <button
+                      type="button"
+                      className="rounded-full bg-red-800 p-1 shadow active:scale-90"
+                      onClick={() => handleDeleteMedia(item)}
+                    >
+                      <Trash className="h-4 w-4 text-red-400" />
+                    </button>
+                  </div>
+                  {item.poster_path ? (
+                    <Poster path={item.poster_path} size="lg" />
+                  ) : (
+                    <EmptyPoster size="lg" />
+                  )}
                 </div>
-                {item.poster_path ? (
-                  <Poster path={item.poster_path} size="lg" />
-                ) : (
-                  <EmptyPoster size="lg" />
-                )}
-              </div>
-              <div className="flex items-center justify-center">
-                <span className="text-xs">{mediaTitle}</span>
-              </div>
-            </div>
-          )
-        })
-      ) : (
-        <span>Selecciona una película o serie</span>
-      )}
+                <div className="flex items-center justify-center">
+                  <span className="text-xs">{mediaTitle}</span>
+                </div>
+              </motion.div>
+            )
+          })
+        ) : (
+          <motion.span animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            Selecciona una película o serie
+          </motion.span>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
