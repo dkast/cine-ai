@@ -29,7 +29,7 @@ export default function Home() {
             Descubre tu próxima serie favorita o película con la ayuda de IA.
           </Balancer>
         </h1>
-        <p className="text-base sm:text-xl">
+        <p className="mb-8 text-base sm:text-xl">
           Personaliza tus recomendaciones de cine y TV: elige hasta 3 de tus
           películas o series favoritas y nos encargamos del resto.
         </p>

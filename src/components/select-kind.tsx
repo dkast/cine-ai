@@ -15,10 +15,9 @@ import { type Kind } from "@/lib/types"
 
 const SelectKind = () => {
   const [kind, setKind] = useAtom(kindAtom)
-  console.log(kind)
   return (
-    <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-      <span className="text-base sm:text-xl">
+    <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-start">
+      <span className="text-base sm:text-lg">
         ¿Que tipo de recomendaciones estas buscando?
       </span>
       <Select
@@ -29,8 +28,8 @@ const SelectKind = () => {
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="tv">Serie de TV</SelectItem>
           <SelectItem value="movie">Película</SelectItem>
+          <SelectItem value="tv">Serie de TV</SelectItem>
         </SelectContent>
       </Select>
     </div>

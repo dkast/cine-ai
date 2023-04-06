@@ -7,6 +7,7 @@ import { useAtom } from "jotai"
 import { XOctagon } from "lucide-react"
 
 import MediaCard from "@/components/media-card"
+import { Textarea } from "@/components/ui/textarea"
 import { kindAtom, mediaAtom } from "@/lib/store"
 
 const container = {
@@ -89,6 +90,19 @@ const GenerateResults = () => {
 
   return (
     <>
+      <div>
+        <label
+          htmlFor="message"
+          className="mb-3 block text-base sm:text-left sm:text-lg"
+        >
+          Puedes añadir algo más para que la recomendación sea más precisa
+        </label>
+        <Textarea
+          placeholder="Ej. Estrenada en los 90's o disponible en Netflix"
+          maxLength={140}
+          id="message"
+        />
+      </div>
       <div className="flex justify-center">
         <motion.button
           type="button"
@@ -117,7 +131,6 @@ const GenerateResults = () => {
       </div>
       <motion.div variants={container} className="flex flex-col gap-4">
         {generatedMedia.split("\n").map((m, i) => {
-          console.log(m)
           if (
             (generatedMedia.split("\n").length - 1 > i || !loading) &&
             m.trim() !== ""
