@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "CineAI",
     type: "website",
-    url: "https://watchgpt.vercel.app"
+    url: "https://cine-ai.vercel.app"
     // images: [
     //   {
     //     url: "https://dkast.dev/og.jpg",
