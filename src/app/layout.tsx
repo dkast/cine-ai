@@ -11,10 +11,8 @@ export const metadata: Metadata = {
     default: "CineAI",
     template: "%s | CineAI"
   },
+  themeColor: "#09090b",
   description: "Obtén recomendaciones de cine y TV con AI",
-  icons: {
-    icon: "/favicon.png"
-  },
   viewport: {
     width: "device-width",
     initialScale: 1,
