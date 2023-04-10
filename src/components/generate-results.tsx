@@ -32,6 +32,7 @@ const GenerateResults = () => {
   const [loading, setLoading] = useState<boolean>(false)
   const [selectedKind, setSelectedKind] = useState("")
   const [generatedMedia, setGeneratedMedia] = useState<string>("")
+  const [instructions, setInstructions] = useState("")
 
   const prompt = `Recomienda 3 ${
     kind === "movie" ? "Películas" : "Series de TV"
@@ -43,7 +44,12 @@ const GenerateResults = () => {
           })
           .join(",")
       : ""
-  }. Regresa tu respuesta como una lista numerada con el titulo seguido por dos puntos, una breve descripción y la razón de la recomendación, deja una linea en blanco entre cada item de la lista.`
+  }. ${
+    instructions.trim() !== ""
+      ? "También añade las siguientes instrucciones: " + instructions
+      : ""
+  }
+  Regresa tu respuesta como una lista numerada con el titulo seguido por dos puntos, una breve descripción y la razón de la recomendación, deja una linea en blanco entre cada item de la lista.`
 
   const generateMedia = async (
     e: React.MouseEvent<HTMLButtonElement>
@@ -92,7 +98,7 @@ const GenerateResults = () => {
     <>
       <div>
         <label
-          htmlFor="message"
+          htmlFor="instructions"
           className="mb-3 block text-base sm:text-left sm:text-lg"
         >
           Puedes añadir algo más para que la recomendación sea más precisa
@@ -100,7 +106,9 @@ const GenerateResults = () => {
         <Textarea
           placeholder="Ej. Estrenada en los 90's o disponible en Netflix"
           maxLength={140}
-          id="message"
+          id="instructions"
+          value={instructions}
+          onChange={(e) => setInstructions(e.target.value)}
         />
       </div>
       <div className="flex justify-center">
