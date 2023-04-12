@@ -1,4 +1,5 @@
-import React from "react"
+import React, { type PropsWithChildren } from "react"
+// import { Analytics } from "@vercel/analytics/react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
@@ -39,16 +40,13 @@ export const metadata: Metadata = {
   //   }
 }
 
-export default function RootLayout({
-  children
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" className={`${inter.variable}`}>
       <head />
       <body className="min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 text-gray-400">
         {children}
+        {/* <Analytics /> */}
       </body>
     </html>
   )
