@@ -23,21 +23,7 @@ export const metadata: Metadata = {
     title: "CineAI",
     type: "website",
     url: "https://cine-ai.vercel.app"
-    // images: [
-    //   {
-    //     url: "https://dkast.dev/og.jpg",
-    //     width: 1200,
-    //     height: 675
-    //   }
-    // ]
   }
-  //   twitter: {
-  //     title: "Daniel Castillejo",
-  //     card: "summary_large_image",
-  //     description: "Sitio personal de Daniel Castillejo",
-  //     creator: "@dkast",
-  //     images: ["https://dkast.dev/og.jpg"]
-  //   }
 }
 
 export default function RootLayout({ children }: PropsWithChildren) {
